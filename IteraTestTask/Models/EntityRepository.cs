@@ -28,7 +28,7 @@ namespace IteraTestTask.Models
 
         public void Create(FoodOrder foodOrder)
         {
-            foodContext.FoodOrders.Add(foodOrder);
+            foodContext.Entry(foodOrder).State = EntityState.Added;
             foodContext.SaveChanges();
         }
 
