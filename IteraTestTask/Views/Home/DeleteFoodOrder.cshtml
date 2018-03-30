@@ -1,0 +1,26 @@
+﻿@model IteraTestTask.Models.FoodOrder
+
+@{
+    ViewBag.Title = "Delete Food Order";
+}
+
+<h2>You what to delete this Order?</h2>
+
+@Html.HiddenFor(m => m.Id)
+
+@Html.LabelFor(m => m.DishName)
+<br />
+@Html.DisplayFor(m => m.DishName)
+<br />
+@Html.LabelFor(m => m.Count)
+<br />
+@Html.DisplayFor(m => m.Count)
+<br />
+
+@using (Html.BeginForm("Delete", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <input type="submit" value="Delete Oder">
+}
+
+

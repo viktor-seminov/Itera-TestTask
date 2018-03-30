@@ -1,0 +1,35 @@
+﻿@using IteraTestTask.Models
+@model FoodOrder
+
+@{
+    ViewBag.Title = "Edit Food Order";
+}
+
+<h2>Edit Food Order </h2>
+
+@using (Html.BeginForm())
+{
+    <fieldset>
+        @Html.HiddenFor(m => Model.Id)
+
+        <p>
+            @Html.LabelFor(m => m.DishName) <br />
+            @Html.EditorFor(m => m.DishName)
+            @Html.ValidationMessageFor(m => m.DishName)
+        </p>
+        @Html.LabelFor(m => m.Count) <br />
+        <div class="editor-field">
+            @Html.EditorFor(m => m.Count)
+            @Html.ValidationMessageFor(m => m.Count)
+        </div>
+        <p>
+            <br />
+            @Html.AntiForgeryToken()
+            <input type="submit" value="Save changes">
+        </p>
+    </fieldset>
+
+}
+
+
+
