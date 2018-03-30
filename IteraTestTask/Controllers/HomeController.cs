@@ -25,6 +25,15 @@ namespace IteraTestTask.Controllers
             ViewData["DishNameSort"] = sortOrder == SortState.DishNameAsc ? SortState.DishNameDesc : SortState.DishNameAsc;
             ViewData["CountSort"] = sortOrder == SortState.CountAsc ? SortState.CountDesc : SortState.CountAsc;
 
+            if (dishName != null && dishName != string.Empty)
+            {
+                orders = orders.Where(p => p.DishName.ToLower().Contains(dishName));
+            }
+            if (count != null && count != 0)
+            {
+                orders = orders.Where(p => p.Count == count);
+            }
+
             switch (sortOrder)
             {
                 case SortState.IdDesc:
@@ -46,21 +55,11 @@ namespace IteraTestTask.Controllers
                     orders = orders.OrderBy(s => s.Id);
                     break;
             }
-
-            if (dishName != null && dishName != string.Empty)
-            {
-                orders = orders.Where(p => p.DishName.ToLower().Contains(dishName));
-            }
-            if (count != null && count != 0)
-            {
-                orders = orders.Where(p => p.Count == count);
-            }
-
             DishesOrdersViewModel viewModel = new DishesOrdersViewModel
             {
                 FoodOrders = orders,
-                DishNameFilter = string.Empty,
-                CountFilter = 0
+                DishNameFilter = dishName,
+                CountFilter = count
             };
 
             return View(viewModel);

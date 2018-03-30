@@ -10,7 +10,7 @@
         @Html.Editor("dishName", Model.DishNameFilter)
         <br />
         <label class="control-label" style="width:100px"> Count </label>
-        @Html.Editor("count", Model.DishNameFilter)
+        @Html.Editor("count", Model.CountFilter)
         <br />
         <input type="submit" value="Search" class="btn btn-default">
     </div>
@@ -23,13 +23,13 @@
     <table class="table-bordered">
         <tr>
             <th>
-                @Html.ActionLink("Order Id  ", "Index", new { sortOrder = ViewBag.IdSort })
+                @Html.ActionLink("Order Id  ", "Index", new { sortOrder = ViewBag.IdSort, dishName = Model.DishNameFilter, count = Model.CountFilter })
             </th>
             <th>
-                @Html.ActionLink("Dish Name  ", "Index", new { sortOrder = ViewBag.DishNameSort })
+                @Html.ActionLink("Dish Name  ", "Index", new { sortOrder = ViewBag.DishNameSort, dishName = Model.DishNameFilter, count = Model.CountFilter })
             </th>
             <th>
-                @Html.ActionLink("Count  ", "Index", new { sortOrder = ViewBag.CountSort })
+                @Html.ActionLink("Count  ", "Index", new { sortOrder = ViewBag.CountSort, dishName = Model.DishNameFilter, count = Model.CountFilter })
             </th>
             <th></th>
         </tr>
